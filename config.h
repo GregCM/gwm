@@ -98,7 +98,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_redbl1, "-nf", col_white1, "-sb", col_blue2, "-sf", col_black1, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_redbl2, "-nf", col_white1, "-sb", col_blue2, "-sf", col_black1, NULL };
 static const char *termcmd[]  = { "terminator", NULL };
 
 #include "selfrestart.c"
