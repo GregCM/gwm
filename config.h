@@ -25,10 +25,15 @@ static const char *colors[][3]      = {
 
 /* start some nice programs */
 static const char *const autostart[] = {
-    "xwallpaper", "--stretch", "$HOME/Pictures/wallpaper.jpg", NULL,
+    "xwallpaper", "--stretch", "home/greg/Pictures/wallpaper.jpg", NULL,
 	"terminator", "-e", "ranger", NULL,
 	"terminator", "-e", "gtop", NULL,
 	"terminator", "-e", "neofetch; bash", NULL,
+    /* Redshift at night w/screen-dim = 40% */
+    "redshift", "-b", "1.0:0.4", "-l", "29.75:-95.36", NULL,
+    /* Bucklespring keyboard sound effects,
+     * mutable by ScrollLock x2 */
+    "buckle", NULL,
 	NULL /* terminate */
 };
 
