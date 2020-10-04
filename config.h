@@ -1,8 +1,8 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 5;        /* border pixel of windows */
-static const unsigned int gappx     = 10;        /* gaps between windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int gappx     = 10;       /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
@@ -12,20 +12,35 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=10" };
 static const char dmenufont[]       = "monospace:size=10";
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
+
+/* 8 normal colors */
+static const char col_black1[]      = "#000000";/*0: BLACK*/
+static const char col_red1[]        = "#d41500";/*1: RED*/
+static const char col_green1[]      = "#19c948";/*2: GREEN*/
+static const char col_yellow1[]     = "#d6b800";/*3: YELLOW*/
+static const char col_blue1[]       = "#5101d0";/*4: BLUE*/
+static const char col_magenta1[]    = "#8101a3";/*5: MAGENTA*/
+static const char col_cyan1[]       = "#25cba2";/*6: CYAN*/
+static const char col_gray1[]       = "#dfc1c1";/*7: GRAY*/
+
+/* 8 bright colors */
+static const char col_black2[]      = "#927272";/*8: gray*/
+static const char col_red2[]        = "#ff5b5b";/*9: red*/
+static const char col_green2[]      = "#59ff59";/*10: green*/
+static const char col_yellow2[]     = "#ffff59";/*11: yellow*/
+static const char col_blue2[]       = "#5c5cff";/*12: blue*/
+static const char col_magenta2[]    = "#ff41ff";/*13: magenta*/
+static const char col_cyan2[]       = "#5cd8d8";/*14: cyan*/
+static const char col_white1[]      = "#fdf3f3";/*15: white*/
+
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+	[SchemeNorm] = { col_black1, col_black2, col_white1},
+	[SchemeSel]  = { col_black1, col_blue1,  col_blue1},
 };
 
 /* start some nice programs */
 static const char *const autostart[] = {
-    "xwallpaper", "--stretch", "home/greg/Pictures/wallpaper.jpg", NULL,
 	"terminator", "-e", "ranger", NULL,
 	"terminator", "-e", "gtop", NULL,
 	"terminator", "-e", "neofetch; bash", NULL,
@@ -34,6 +49,7 @@ static const char *const autostart[] = {
     /* Bucklespring keyboard sound effects,
      * mutable by ScrollLock x2 */
     "buckle", NULL,
+    "xwallpaper", "--stretch", "home/greg/Pictures/wallpaper.jpg", NULL,
 	NULL /* terminate */
 };
 
@@ -63,6 +79,8 @@ static const Layout layouts[] = {
 	{ "[M]",      monocle },
  	{ "[@]",      spiral },
  	{ "[\\]",      dwindle },
+	{ "|C|",      centeredmaster },
+	{ ">C>",      centeredfloatingmaster },
 };
 
 /* key definitions */
@@ -78,7 +96,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_black1, "-sb", col_blue2, "-sf", col_black1, NULL };
 static const char *termcmd[]  = { "terminator", NULL };
 
 static Key keys[] = {
@@ -95,11 +113,13 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                       XK_y,      setlayout,      {.v = &layouts[3]} },
-	{ MODKEY,                       XK_u,      setlayout,      {.v = &layouts[4]} },
+	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} }, /*tile*/
+	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} }, /*floating*/
+	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} }, /*monocle*/
+	{ MODKEY,                       XK_y,      setlayout,      {.v = &layouts[3]} }, /*spiral*/
+	{ MODKEY,                       XK_u,      setlayout,      {.v = &layouts[4]} }, /*dwindle*/
+	{ MODKEY,                       XK_c,      setlayout,      {.v = &layouts[5]} }, /*centered-master*/
+	{ MODKEY|ShiftMask,             XK_c,      setlayout,      {.v = &layouts[6]} }, /*centered-floating master*/
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
@@ -120,7 +140,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY,                       XK_Escape, quit,           {0} },
+	{ MODKEY|ShiftMask,             XK_Escape, quit,           {0} },
 };
 
 /* button definitions */
