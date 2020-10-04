@@ -15,6 +15,7 @@ static const char dmenufont[]       = "monospace:size=10";
 
 /* 8 normal colors */
 static const char col_black1[]      = "#000000";/*0: BLACK*/
+static const char col_redbl1[]      = "#180808";/*0.5: RED-BLACK*/
 static const char col_red1[]        = "#d41500";/*1: RED*/
 static const char col_green1[]      = "#19c948";/*2: GREEN*/
 static const char col_yellow1[]     = "#d6b800";/*3: YELLOW*/
@@ -25,6 +26,7 @@ static const char col_gray1[]       = "#dfc1c1";/*7: GRAY*/
 
 /* 8 bright colors */
 static const char col_black2[]      = "#927272";/*8: gray*/
+static const char col_redbl2[]      = "#3c2121";/*8.5: red-gray*/
 static const char col_red2[]        = "#ff5b5b";/*9: red*/
 static const char col_green2[]      = "#59ff59";/*10: green*/
 static const char col_yellow2[]     = "#ffff59";/*11: yellow*/
@@ -35,7 +37,7 @@ static const char col_white1[]      = "#fdf3f3";/*15: white*/
 
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_black1, col_black2, col_white1},
+	[SchemeNorm] = { col_white1, col_redbl1, col_white1},
 	[SchemeSel]  = { col_black1, col_blue1,  col_blue1},
 };
 
@@ -96,7 +98,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_black1, "-sb", col_blue2, "-sf", col_black1, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_redbl1, "-nf", col_white1, "-sb", col_blue2, "-sf", col_black1, NULL };
 static const char *termcmd[]  = { "terminator", NULL };
 
 #include "selfrestart.c"
