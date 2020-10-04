@@ -23,8 +23,12 @@ static const char *colors[][3]      = {
 	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
 };
 
+/* start some nice programs */
 static const char *const autostart[] = {
-	"terminator", NULL,
+    "xwallpaper", "--stretch", "$HOME/Pictures/wallpaper.jpg", NULL,
+	"terminator", "-e", "ranger", NULL,
+	"terminator", "-e", "gtop", NULL,
+	"terminator", "-e", "neofetch; bash", NULL,
 	NULL /* terminate */
 };
 
@@ -43,8 +47,7 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
-static const int nmaster     = 1;    /* number of clients in master area */
+static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */ static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 
 #include "fibonacci.c"
