@@ -136,6 +136,7 @@ static Key keys[] = {
     { MODKEY,                       XK_minus,  setgaps,        {.i = -1 } },
  	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = +1 } }, /* + */
  	{ MODKEY,                       XK_equal,  setgaps,        {.i = 0  } }, /* = */
+
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -145,8 +146,17 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
+
 	{ MODKEY,                       XK_Escape, quit,           {0} },
     { MODKEY|ShiftMask,             XK_Escape, self_restart,   {0} },
+
+	{ 0,		    XK_Print,                  spawn,		   SHCMD("scrot $HOME/Pictures/`date +%Y-%m-%d_%H:%M:%S`.png") },
+	{ 0,            XF86XK_MonBrightnessUp,	   spawn,		   SHCMD("xbacklight -inc 15") },
+	{ 0,            XF86XK_MonBrightnessDown,  spawn,		   SHCMD("xbacklight -dec 15") },
+	{ 0,            XF86XK_AudioMute,		   spawn,		   SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle") },
+	{ 0,            XF86XK_AudioRaiseVolume,   spawn,		   SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%") },
+	{ 0,            XF86XK_AudioLowerVolume,   spawn,		   SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%") }
+,
 };
 
 /* button definitions */
