@@ -4,7 +4,7 @@
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int gappx     = 10;       /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
-static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
+static const unsigned int systraypinning = 1;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const int showsystray        = 1;     /* 0 means no systray */
@@ -51,6 +51,8 @@ static const char *const autostart[] = {
     /* Bucklespring keyboard sound effects,
      * mutable by ScrollLock x2 */
     "buckle", NULL,
+    "xrandr", "--output","HDMI1","--auto", "--right-of", "eDP1", NULL,
+    "terminator", "-e", "\"xwallpaper --stretch /home/greg/Pictures/wallpaper.jpg\"", NULL,
 	NULL /* terminate */
 };
 
