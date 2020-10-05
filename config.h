@@ -52,6 +52,7 @@ static const char *const autostart[] = {
      * mutable by ScrollLock x2 */
     "buckle", NULL,
     "xrandr", "--output","HDMI1","--auto", "--right-of", "eDP1", NULL,
+    "xrandr", "--output","VGA1","--auto", "--right-of", "HDMI1", NULL,
     "terminator", "-e", "\"xwallpaper --stretch /home/greg/Pictures/wallpaper.jpg\"", NULL,
 	NULL /* terminate */
 };
