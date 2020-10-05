@@ -51,7 +51,6 @@ static const char *const autostart[] = {
     /* Bucklespring keyboard sound effects,
      * mutable by ScrollLock x2 */
     "buckle", NULL,
-    "xwallpaper", "--stretch", "home/greg/Pictures/wallpaper.jpg", NULL,
 	NULL /* terminate */
 };
 
