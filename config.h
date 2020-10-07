@@ -43,9 +43,9 @@ static const char *colors[][3]      = {
 
 /* start some nice programs */
 static const char *const autostart[] = {
-	"terminator", "-e", "ranger", NULL,
-	"terminator", "-e", "gtop", NULL,
-	"terminator", "-e", "neofetch; bash", NULL,
+	"st", "-e", "ranger", NULL,
+	"st", "-e", "gtop", NULL,
+	"st", "-e", "neofetch; bash", NULL,
     /* Redshift at night w/screen-dim = 40% */
     "redshift", "-b", "1.0:0.4", "-l", "29.75:-95.36", NULL,
     /* Bucklespring keyboard sound effects,
@@ -53,7 +53,7 @@ static const char *const autostart[] = {
     "buckle", NULL,
     "xrandr", "--output","HDMI1","--auto", "--right-of", "eDP1", NULL,
     "xrandr", "--output","VGA1","--auto", "--right-of", "HDMI1", NULL,
-    "terminator", "-e", "\"xwallpaper --stretch /home/greg/Pictures/wallpaper.jpg\"", NULL,
+    "st", "-e", "\"xwallpaper --stretch /home/greg/Pictures/wallpaper.jpg\"", NULL,
 	NULL /* terminate */
 };
 
@@ -101,7 +101,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_redbl2, "-nf", col_white1, "-sb", col_blue2, "-sf", col_black1, NULL };
-static const char *termcmd[]  = { "terminator", NULL };
+static const char *termcmd[]  = { "st", NULL };
 
 #include "selfrestart.c"
 
