@@ -46,14 +46,15 @@ static const char *colors[][3]      = {
 static const char *const autostart[] = {
 	"st", "-e", "ranger", NULL,
 	"st", "-e", "gtop", NULL,
+    /* TODO Neofetch should be run here:*/
 	"st", NULL,
     /* Redshift at night w/screen-dim = 40% */
     "redshift", "-b", "1.0:0.4", "-l", "29.75:-95.36", NULL,
     /* Bucklespring keyboard sound effects,
      * mutable by ScrollLock x2 */
     "buckle", NULL,
-    "xrandr", "--output","VGA1","--auto", "--left-of", "eDP1", NULL,
-    "xrandr", "--output","HDMI1","--auto", "--left1-of", "VGA1", NULL,
+    "xrandr", "--output","DP1","--auto", "--left-of", "eDP1", NULL,
+    "xrandr", "--output","HDMI1","--auto", "--left1-of", "DP1", NULL,
     "xwallpaper", "--stretch", "/home/greg/Pictures/wallpaper.jpg", NULL,
 	NULL /* terminate */
 };
