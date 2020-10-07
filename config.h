@@ -52,9 +52,9 @@ static const char *const autostart[] = {
     /* Bucklespring keyboard sound effects,
      * mutable by ScrollLock x2 */
     "buckle", NULL,
-    "xrandr", "--output","HDMI1","--auto", "--right-of", "eDP1", NULL,
-    "xrandr", "--output","VGA1","--auto", "--right-of", "HDMI1", NULL,
-    "st", "-e", "\"xwallpaper --stretch /home/greg/Pictures/wallpaper.jpg\"", NULL,
+    "xrandr", "--output","VGA1","--auto", "--left-of", "eDP1", NULL,
+    "xrandr", "--output","HDMI1","--auto", "--left1-of", "VGA1", NULL,
+    "xwallpaper", "--stretch", "/home/greg/Pictures/wallpaper.jpg", NULL,
 	NULL /* terminate */
 };
 
