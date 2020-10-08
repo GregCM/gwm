@@ -45,12 +45,12 @@ static const char *colors[][3]      = {
 /* start some nice programs */
 static const char *const autostart[] = {
     "xrandr", "--output","DP1","--auto", "--left-of", "eDP1", NULL,
-    "xrandr", "--output","HDMI1","--auto", "--left-of", "DP1", NULL,
+    /*"xrandr", "--output","HDMI1","--auto", "--left-of", "DP1", NULL,*/
     "xwallpaper", "--stretch", "/home/greg/Pictures/wallpaper.jpg", NULL,
 	"st", "-e", "ranger", NULL,
 	"st", "-e", "gtop", NULL,
-    /* TODO Neofetch should be run here:*/
-	"st", NULL,
+    /* TODO Neofetch should be run here (st):*/
+	"terminator", "-e", "neofetch --gtk3 off; bash", NULL,
     /* Bucklespring keyboard sound effects,
      * mutable by ScrollLock x2 */
     "buckle", NULL,
@@ -156,6 +156,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Escape, quit,           {0} },
     { MODKEY|ShiftMask,             XK_Escape, self_restart,   {0} },
 
+	{ MODKEY,		XK_Home,                   spawn,		   SHCMD("brave") }, /* open browser */
 	{ 0,		    XK_Print,                  spawn,		   SHCMD("scrot $HOME/Pictures/`date +%Y-%m-%d_%H:%M:%S`.png") },
 	{ 0,            XF86XK_MonBrightnessUp,	   spawn,		   SHCMD("xbacklight -inc 7.5") },
 	{ 0,            XF86XK_MonBrightnessDown,  spawn,		   SHCMD("xbacklight -dec 7.5") },
