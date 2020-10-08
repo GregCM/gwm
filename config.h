@@ -134,10 +134,10 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
-	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } }, /* move to monitor left of current*/
+	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } }, /* move to monitor right of current*/
+	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } }, /* move tag one monitor to the left*/
+	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } }, /* move tag one monitor to the right*/
     { MODKEY,                       XK_minus,  setgaps,        {.i = -1 } },
  	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = +1 } }, /* + */
  	{ MODKEY,                       XK_equal,  setgaps,        {.i = 0  } }, /* = */
@@ -156,8 +156,8 @@ static Key keys[] = {
     { MODKEY|ShiftMask,             XK_Escape, self_restart,   {0} },
 
 	{ 0,		    XK_Print,                  spawn,		   SHCMD("scrot $HOME/Pictures/`date +%Y-%m-%d_%H:%M:%S`.png") },
-	{ 0,            XF86XK_MonBrightnessUp,	   spawn,		   SHCMD("xbacklight -inc 15") },
-	{ 0,            XF86XK_MonBrightnessDown,  spawn,		   SHCMD("xbacklight -dec 15") },
+	{ 0,            XF86XK_MonBrightnessUp,	   spawn,		   SHCMD("xbacklight -inc 7.5") },
+	{ 0,            XF86XK_MonBrightnessDown,  spawn,		   SHCMD("xbacklight -dec 7.5") },
 	{ 0,            XF86XK_AudioMute,		   spawn,		   SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle") },
 	{ 0,            XF86XK_AudioRaiseVolume,   spawn,		   SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%") },
 	{ 0,            XF86XK_AudioLowerVolume,   spawn,		   SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%") }
