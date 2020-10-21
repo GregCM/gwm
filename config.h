@@ -47,10 +47,6 @@ static const char *const autostart[] = {
     "xrandr", "--output","DP1","--auto", "--left-of", "eDP1", NULL,
     /*"xrandr", "--output","HDMI1","--auto", "--left-of", "DP1", NULL,*/
     "xwallpaper", "--stretch", "/home/greg/Pictures/wallpaper.jpg", NULL,
-	"st", "-e", "ranger", NULL,
-	"st", "-e", "gtop", NULL,
-    /* TODO Neofetch should be run here (st):*/
-	"terminator", "-e", "neofetch --gtk3 off; bash", NULL,
     /* Bucklespring keyboard sound effects,
      * mutable by ScrollLock x2 */
     "buckle", NULL,
