@@ -44,7 +44,7 @@ static const char *colors[][3]      = {
 
 /* start some nice programs */
 static const char *const autostart[] = {
-    "xrandr", "--output","DP1","--auto", "--left-of", "eDP1", NULL,
+    "xrandr", "--output", "DP1","--auto", "--left-of", "eDP1", NULL,
     /*"xrandr", "--output","HDMI1","--auto", "--left-of", "DP1", NULL,*/
     "xwallpaper", "--stretch", "/home/greg/Pictures/wallpaper.jpg", NULL,
     /* Bucklespring keyboard sound effects,
@@ -52,6 +52,7 @@ static const char *const autostart[] = {
     "buckle", NULL,
     /* Redshift at night w/screen-dim = 40% */
     "redshift", "-b", "1.0:0.4", "-l", "29.75:-95.36", NULL,
+    "buckle", NULL,
 	NULL /* terminate */
 };
 
@@ -138,6 +139,19 @@ static Key keys[] = {
     { MODKEY,                       XK_minus,  setgaps,        {.i = -1 } },
  	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = +1 } }, /* + */
  	{ MODKEY,                       XK_equal,  setgaps,        {.i = 0  } }, /* = */
+	{ MODKEY,                       XK_Escape, quit,           {0} },
+    { MODKEY|ShiftMask,             XK_Escape, spawn,          SHCMD("reboot") },
+	{ MODKEY,		XK_Home,                   spawn,		   SHCMD("brave") }, /* open browser */
+	{ MODKEY,		XK_backslash,              spawn,		   SHCMD("ranger") }, /* open file manager */
+	{ MODKEY,		XK_slash,                  spawn,		   SHCMD("gtop") }, /* open system monitor */
+	{ MODKEY,		XK_Menu,                   spawn,		   SHCMD("mb") }, /* open mailbox */
+	{ MODKEY,		XK_Print,                  spawn,		   SHCMD("screenkey") }, /* stream key presses */
+	{ 0,		    XK_Print,                  spawn,		   SHCMD("scrot $HOME/Pictures/`date +%Y-%m-%d_%H:%M:%S`.png") },
+	{ 0,            XF86XK_MonBrightnessUp,	   spawn,		   SHCMD("xbacklight -inc 7.5") },
+	{ 0,            XF86XK_MonBrightnessDown,  spawn,		   SHCMD("xbacklight -dec 7.5") },
+	{ 0,            XF86XK_AudioMute,		   spawn,		   SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle") },
+	{ 0,            XF86XK_AudioRaiseVolume,   spawn,		   SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%") },
+	{ 0,            XF86XK_AudioLowerVolume,   spawn,		   SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%") },
 
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
@@ -149,17 +163,6 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 
-	{ MODKEY,                       XK_Escape, quit,           {0} },
-    { MODKEY|ShiftMask,             XK_Escape, self_restart,   {0} },
-
-	{ MODKEY,		XK_Home,                   spawn,		   SHCMD("brave") }, /* open browser */
-	{ 0,		    XK_Print,                  spawn,		   SHCMD("scrot $HOME/Pictures/`date +%Y-%m-%d_%H:%M:%S`.png") },
-	{ 0,            XF86XK_MonBrightnessUp,	   spawn,		   SHCMD("xbacklight -inc 7.5") },
-	{ 0,            XF86XK_MonBrightnessDown,  spawn,		   SHCMD("xbacklight -dec 7.5") },
-	{ 0,            XF86XK_AudioMute,		   spawn,		   SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle") },
-	{ 0,            XF86XK_AudioRaiseVolume,   spawn,		   SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%") },
-	{ 0,            XF86XK_AudioLowerVolume,   spawn,		   SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%") }
-,
 };
 
 /* button definitions */
