@@ -139,12 +139,11 @@ static Key keys[] = {
     { MODKEY,                       XK_minus,  setgaps,        {.i = -1 } },
  	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = +1 } }, /* + */
  	{ MODKEY,                       XK_equal,  setgaps,        {.i = 0  } }, /* = */
-	{ MODKEY,                       XK_Escape, quit,           {0} },
+	{ MODKEY,                       XK_Escape, spawn,          SHCMD("st -e shutdown now") },
     { MODKEY|ShiftMask,             XK_Escape, spawn,          SHCMD("st -e reboot") },
 	{ MODKEY,		XK_Home,                   spawn,		   SHCMD("brave") }, /* open browser */
 	{ MODKEY,		XK_backslash,              spawn,		   SHCMD("st -e ranger") }, /* open file manager */
-	{ MODKEY,		XK_slash,                  spawn,		   SHCMD("st -e gtop") }, /* open system monitor */
-	/* { MODKEY,		XK_Menu,                   spawn,		   SHCMD("st -e mb") }, open mailbox */
+	{ MODKEY,		XK_slash,                  spawn,		   SHCMD("st -e mb") }, /* open mailbox */
 	/* { MODKEY,		XK_Print,                  spawn,		   SHCMD("screenkey") }, stream key presses */
 	{ 0,		    XK_Print,                  spawn,		   SHCMD("scrot $HOME/Pictures/`date +%Y-%m-%d_%H:%M:%S`.png") },
 	{ 0,            XF86XK_MonBrightnessUp,	   spawn,		   SHCMD("xbacklight -inc 7.5") },
